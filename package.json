@@ -2,9 +2,9 @@
   "name": "backend",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "src/server.js",
   "scripts": {
-    "start": "nodemon src/server.js",
+    "start": "node index.js",
     "test": "cross-env NODE_ENV=test jest"
   },
   "keywords": [],
