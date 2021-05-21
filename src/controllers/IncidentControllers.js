@@ -19,7 +19,7 @@ module.exports = {
         'ongs.ong_district',
         'ongs.whatsapp',])
 
-        response.header('X-Total-Count',count['count(*)'])
+        response.header('x-total-count',count['count(*)'])
           console.log(`incidents`, incidents)
         return response.json(incidents)
     },
