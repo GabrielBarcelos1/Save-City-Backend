@@ -3,14 +3,18 @@
 module.exports = {
 
   development: {
-    client: 'sqlite3',
-    connection: {
-      filename: './src/database/db.sqlite'
+    client: 'pg',
+    debug: true,
+    connection: process.env.BASE_URL,
+    pool: {
+      min: 2,
+      max: 10
     },
-    migrations:{
+    migrations: {
+      tableName: 'knex_migrations',
       directory: './src/database/migrations'
     },
-    useNullAsDefault: true,
+    ssl: true
   },
   test: {
     client: 'sqlite3',
@@ -40,19 +44,18 @@ module.exports = {
   },
 
   production: {
-    client: 'postgresql',
-    connection: {
-      database: 'my_db',
-      user:     'username',
-      password: 'password'
-    },
+    client: 'pg',
+    debug: true,
+    connection:"postgres://yzewdzri:c-cKe_6iYwIF5ef0bFVnEpIP8IsR194w@tuffi.db.elephantsql.com/yzewdzri",
     pool: {
       min: 2,
       max: 10
     },
     migrations: {
-      tableName: 'knex_migrations'
-    }
+      tableName: 'knex_migrations',
+      directory: './src/database/migrations'  // <-- here
+    },
+    ssl: true
   }
 
 };
