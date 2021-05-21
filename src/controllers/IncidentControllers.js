@@ -19,8 +19,7 @@ module.exports = {
         'ongs.ong_district',
         'ongs.whatsapp',])
 
-        response.header('x-total-count',count['count(*)'])
-          console.log(`incidents`, incidents)
+        response.header('x-total-count',count.count)
         return response.json(incidents)
     },
 async create(request, response){
