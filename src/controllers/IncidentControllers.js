@@ -21,6 +21,27 @@ module.exports = {
         console.log(incidents[0].count = count['count'])
         return response.json(incidents)
     },
+    async withFilterCelesc (request,response) {
+        const {page = 1} = request.query
+
+        const [count] = await connection('incidents')
+        .count()
+        response.header('x-total-count',count['count'])
+        const incidents = await connection('incidents')
+        .join('ongs','ongs.id', '=', 'incidents.ong_id')
+        .limit(5)
+        .offset((page - 1) * 5)
+        .where('type', 'celesc')
+        .select([
+        'incidents.*', 
+        'ongs.name',
+        'ongs.email',
+        'ongs.ong_city',
+        'ongs.ong_district',
+        'ongs.whatsapp',])
+        console.log(incidents[0].count = count['count'])
+        return response.json(incidents)
+    },
 async create(request, response){
     const{title, description ,cep, city, district, street, number, type} = request.body
     const ong_id = request.headers.authorization

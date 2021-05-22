@@ -45,6 +45,13 @@ routes.get('/incidents',celebrate({
     })
 }) , IncidentController.index)
 
+routes.get('/incidents/celesc',celebrate({
+    [Segments.QUERY]:Joi.object().keys({
+        page: Joi.number()
+    })
+}) , IncidentController.withFilterCelesc)
+
+
 
 routes.post('/incidents',celebrate({
     [Segments.HEADERS]: Joi.object({
