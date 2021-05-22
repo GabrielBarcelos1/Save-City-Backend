@@ -22,27 +22,25 @@ module.exports = {
         return response.json(incidents)
     },
 async create(request, response){
-    const{title, description ,cep, city, district, street, number} = request.body
+    const{title, description ,cep, city, district, street, number, type} = request.body
     const ong_id = request.headers.authorization
 
-   const [id] = await connection('incidents').insert({
-        title,
-        description,
-        cep,
-        city,
-        district,
-        street,
-        number,
-        ong_id
-    })
-    return response.json({ title,
+  try{
+    const a = await connection('incidents').insert({
+      title,
       description,
       cep,
       city,
       district,
       street,
       number,
-      ong_id })
+      type,
+      ong_id
+  })
+  return response.json(a)
+  }catch(err){
+    console.log(err)
+  } 
 },
 async getById(request, response){
   const { id } = request.params;
@@ -70,7 +68,7 @@ async getById(request, response){
 
 },
 async update(request, response){
-  const{title, description ,cep, city, district, street, number} = request.body
+  const{title, description ,cep, city, district, street, number, type} = request.body
   const { id } = request.params;
   const ong_id = request.headers.authorization;
 
@@ -99,6 +97,7 @@ async update(request, response){
     city,
     district,
     street,
+    type,
     number,
     ong_id
   })

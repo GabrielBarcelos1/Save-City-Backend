@@ -58,6 +58,7 @@ routes.post('/incidents',celebrate({
        city: Joi.string().required(),
        street: Joi.string().required(),
        district: Joi.string().required(),
+       type: Joi.string().required(),
        number: Joi.string().required(),
     })
 }), IncidentController.create)
@@ -77,6 +78,7 @@ routes.put('/incident/:id',celebrate({
         city: Joi.string().required(),
         street: Joi.string().required(),
         district: Joi.string().required(),
+        type: Joi.string().required(),
         number: Joi.string().required(),
      }),
      [Segments.PARAMS]: Joi.object().keys({
