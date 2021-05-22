@@ -51,6 +51,18 @@ routes.get('/incidents/celesc',celebrate({
     })
 }) , IncidentController.withFilterCelesc)
 
+routes.get('/incidents/casan',celebrate({
+    [Segments.QUERY]:Joi.object().keys({
+        page: Joi.number()
+    })
+}) , IncidentController.withFilterCasan)
+
+routes.get('/incidents/comcap',celebrate({
+    [Segments.QUERY]:Joi.object().keys({
+        page: Joi.number()
+    })
+}) , IncidentController.withFilterComcap)
+
 
 
 routes.post('/incidents',celebrate({
