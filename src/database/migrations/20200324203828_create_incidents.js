@@ -3,7 +3,7 @@ exports.up = function(knex) {
   return knex.schema.createTable('incidents',function(table){
     table.increments()
     table.string('title').notNullable();
-    table.string('description').notNullable();
+    table.text('description').notNullable();
     table.string('cep').notNullable();
     table.string('city').notNullable();
     table.string('district').notNullable();

@@ -19,7 +19,6 @@ module.exports = {
         'ongs.ong_district',
         'ongs.whatsapp',])
         console.log(incidents[0].count = count['count'])
-
         return response.json(incidents)
     },
 async create(request, response){
