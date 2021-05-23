@@ -10,6 +10,7 @@ exports.up = function(knex) {
     table.string('street').notNullable();
     table.string('number').notNullable();
     table.string('type').notNullable();
+    table.string('situation').notNullable();
     table.string('ong_id').notNullable()
     table.foreign('ong_id').references('id').inTable('ongs')
   })

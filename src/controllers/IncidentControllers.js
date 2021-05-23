@@ -98,6 +98,7 @@ async create(request, response){
       street,
       number,
       type,
+      situation: 'pendente',
       ong_id
   })
   return response.json(a)
@@ -141,28 +142,25 @@ async update(request, response){
   .where('incidents.id', id)
   .select('*')
   .first()
-
-  
-
-  console.log(`incident`, incident)
-
   if (incident.ong_id != ong_id) {
     return response.status(401).json({
       error: 'Operation not permited.'
     });
-  }
-  
+  }},
+async updateSituation(request, response){
+  const{ situation } = request.body
+  const { id } = request.params;
+
+  console.log(`id, ong_id`, id)
+
+  const incident = await connection('incidents')
+  .where('incidents.id', id)
+  .select('*')
+  .first()
+
   await connection('incidents')
   .update({
-    title,
-    description,
-    cep,
-    city,
-    district,
-    street,
-    type,
-    number,
-    ong_id
+    situation
   })
   .where('id', id)
 

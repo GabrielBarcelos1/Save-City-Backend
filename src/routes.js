@@ -105,6 +105,15 @@ routes.put('/incident/:id',celebrate({
     })
 }),IncidentController.update)
 
+routes.put('/incidentmobile/:id',celebrate({
+    [Segments.BODY]: Joi.object().keys({
+        situation: Joi.string().required(),
+     }),
+     [Segments.PARAMS]: Joi.object().keys({
+        id: Joi.number().required()
+    })
+}),IncidentController.updateSituation)
+
 routes.delete('/incidents/:id',celebrate({
     [Segments.PARAMS]: Joi.object().keys({
         id: Joi.number().required()
