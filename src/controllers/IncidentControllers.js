@@ -146,7 +146,22 @@ async update(request, response){
     return response.status(401).json({
       error: 'Operation not permited.'
     });
-  }},
+  }
+    await connection('incidents').update({
+    title,
+    description,
+    cep,
+    city,
+    district,
+    street,
+    number,
+    ong_id,
+    type
+  })
+  .where('id', id)
+    return response.json({})
+
+},
 async updateSituation(request, response){
   const{ situation } = request.body
   const { id } = request.params;
