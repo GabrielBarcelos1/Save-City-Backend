@@ -18,6 +18,7 @@ module.exports = {
         'ongs.ong_city',
         'ongs.ong_district',
         'ongs.whatsapp',])
+        .orderBy('incidents.id', 'asc')
         console.log(incidents[0].count = count['count'])
         return response.json(incidents)
     },
@@ -39,6 +40,7 @@ module.exports = {
         'ongs.ong_city',
         'ongs.ong_district',
         'ongs.whatsapp',])
+        .orderBy('incidents.id', 'asc')
         console.log(incidents[0].count = count['count'])
         return response.json(incidents)
     },
@@ -60,6 +62,7 @@ module.exports = {
         'ongs.ong_city',
         'ongs.ong_district',
         'ongs.whatsapp',])
+        .orderBy('incidents.id', 'asc')
         console.log(incidents[0].count = count['count'])
         return response.json(incidents)
     },
@@ -81,6 +84,7 @@ module.exports = {
         'ongs.ong_city',
         'ongs.ong_district',
         'ongs.whatsapp',])
+        .orderBy('incidents.id', 'asc')
         console.log(incidents[0].count = count['count'])
         return response.json(incidents)
     },
