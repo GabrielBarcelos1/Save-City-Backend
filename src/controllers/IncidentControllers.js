@@ -92,7 +92,7 @@ module.exports = {
     async incidentsCompleteds (request,response) {
       const {page = 1} = request.query
 
-      const [count] = await connection('incidents')
+      const [count] = await connection('incidents').where('incidents.situation',  'concluido')
       .count()
       response.header('x-total-count',count['count'])
       const incidents = await connection('incidents')
