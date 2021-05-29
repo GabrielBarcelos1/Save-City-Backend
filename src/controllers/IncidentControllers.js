@@ -4,7 +4,7 @@ module.exports = {
     async index (request,response) {
         const {page = 1} = request.query
 
-        const [count] = await connection('incidents')
+        const [count] = await connection('incidents').whereNot('incidents.situation',  'concluido')
         .count()
         response.header('x-total-count',count['count'])
         const incidents = await connection('incidents')
@@ -19,13 +19,14 @@ module.exports = {
         'ongs.ong_district',
         'ongs.whatsapp',])
         .orderBy('incidents.id', 'asc')
+        .whereNot('incidents.situation',  'concluido')
         console.log(incidents[0].count = count['count'])
         return response.json(incidents)
     },
     async withFilterCelesc (request,response) {
         const {page = 1} = request.query
 
-        const [count] = await connection('incidents').where('type', 'celesc')
+        const [count] = await connection('incidents').where('type', 'celesc').whereNot('incidents.situation',  'concluido')
         .count()
         response.header('x-total-count',count['count'])
         const incidents = await connection('incidents')
@@ -41,13 +42,14 @@ module.exports = {
         'ongs.ong_district',
         'ongs.whatsapp',])
         .orderBy('incidents.id', 'asc')
+        .whereNot('incidents.situation',  'concluido')
         console.log(incidents[0].count = count['count'])
         return response.json(incidents)
     },
     async withFilterCasan (request,response) {
         const {page = 1} = request.query
 
-        const [count] = await connection('incidents').where('type', 'casan')
+        const [count] = await connection('incidents').where('type', 'casan').whereNot('incidents.situation',  'concluido')
         .count()
         response.header('x-total-count',count['count'])
         const incidents = await connection('incidents')
@@ -63,13 +65,14 @@ module.exports = {
         'ongs.ong_district',
         'ongs.whatsapp',])
         .orderBy('incidents.id', 'asc')
+        .whereNot('incidents.situation',  'concluido')
         console.log(incidents[0].count = count['count'])
         return response.json(incidents)
     },
     async withFilterComcap (request,response) {
         const {page = 1} = request.query
 
-        const [count] = await connection('incidents').where('type', 'comcap')
+        const [count] = await connection('incidents').where('type', 'comcap').whereNot('incidents.situation',  'concluido')
         .count()
         response.header('x-total-count',count['count'])
         const incidents = await connection('incidents')
@@ -85,6 +88,7 @@ module.exports = {
         'ongs.ong_district',
         'ongs.whatsapp',])
         .orderBy('incidents.id', 'asc')
+        .whereNot('incidents.situation',  'concluido')
         console.log(incidents[0].count = count['count'])
         return response.json(incidents)
     },
@@ -92,7 +96,7 @@ module.exports = {
     async incidentsCompleteds (request,response) {
       const {page = 1} = request.query
 
-      const [count] = await connection('incidents').where('incidents.situation',  'concluido')
+      const [count] = await connection('incidents').where('incidents.situation',  'concluido').whereNot('incidents.situation',  'concluido')
       .count()
       response.header('x-total-count',count['count'])
       const incidents = await connection('incidents')
@@ -108,6 +112,7 @@ module.exports = {
       'ongs.whatsapp',])
       .where('incidents.situation',  'concluido')
       .orderBy('incidents.id', 'asc')
+      .whereNot('incidents.situation',  'concluido')
       console.log(incidents[0].count = count['count'])
       return response.json(incidents)
   },
