@@ -25,7 +25,7 @@ module.exports = {
     async withFilterCelesc (request,response) {
         const {page = 1} = request.query
 
-        const [count] = await connection('incidents')
+        const [count] = await connection('incidents').where('type', 'celesc')
         .count()
         response.header('x-total-count',count['count'])
         const incidents = await connection('incidents')
@@ -47,7 +47,7 @@ module.exports = {
     async withFilterCasan (request,response) {
         const {page = 1} = request.query
 
-        const [count] = await connection('incidents')
+        const [count] = await connection('incidents').where('type', 'casan')
         .count()
         response.header('x-total-count',count['count'])
         const incidents = await connection('incidents')
@@ -69,7 +69,7 @@ module.exports = {
     async withFilterComcap (request,response) {
         const {page = 1} = request.query
 
-        const [count] = await connection('incidents')
+        const [count] = await connection('incidents').where('type', 'comcap')
         .count()
         response.header('x-total-count',count['count'])
         const incidents = await connection('incidents')
