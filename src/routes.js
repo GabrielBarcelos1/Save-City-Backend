@@ -64,6 +64,12 @@ routes.get('/incidents/comcap',celebrate({
 }) , IncidentController.withFilterComcap)
 
 
+routes.get('/incidentsCompleteds',celebrate({
+    [Segments.QUERY]:Joi.object().keys({
+        page: Joi.number()
+    })
+}) , IncidentController.incidentsCompleteds)
+
 
 routes.post('/incidents',celebrate({
     [Segments.HEADERS]: Joi.object({
